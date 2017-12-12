@@ -1,0 +1,69 @@
+{
+  "apps": [
+    {
+      "root": "./",
+      "outDir": "dist",
+      "assets": [
+        {
+          "glob": "**/*",
+          "input": "public",
+          "output": "./"
+        }
+      ],
+      "index": "index.html",
+      "main": "src/main.ts",
+      "test": "./test.ts",
+      "tsconfig": "./tsconfig.json",
+      "testTsconfig": "./tsconfig.json",
+      "prefix": "app",
+      "mobile": false,
+      "styles": [
+        "node_modules/font-awesome/css/font-awesome.css",
+        "node_modules/tether/dist/css/tether.min.css",
+        "node_modules/bootstrap/dist/css/bootstrap.css"
+      ],
+      "scripts": [
+        "node_modules/jquery/dist/jquery.min.js",
+        "node_modules/tether/dist/js/tether.min.js",
+        "node_modules/popper.js/dist/umd/popper.min.js",
+        "node_modules/bootstrap/dist/js/bootstrap.js"
+      ],
+      "environmentSource": "src/environment.ts",
+      "environments": {
+        "test": "src/environment.ts",
+        "dev": "src/environment.dev.ts",
+        "staging": "src/environment.ts",
+        "prod": "src/environment.ts"
+      }
+    }
+  ],
+  "addons": [],
+  "packages": [],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    },
+    "codeCoverage": {
+      "exclude": [
+        "**/*Mocker.ts",
+        "**/Mock/*.ts"
+      ]
+    }
+  },
+  "defaults": {
+    "styleExt": "scss",
+    "prefixInterfaces": true,
+    "inline": {
+      "style": false,
+      "template": false
+    },
+    "spec": {
+      "class": true,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
+    }
+  }
+}

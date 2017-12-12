@@ -1,0 +1,32 @@
+
+.menu {
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: hidden;
+    position:relative;
+    .float-right .fa {
+        float:right;
+    }
+}
+
+.menu .menu {
+    width: 100%;
+    font-size: 14px;
+}
+
+.menu .menu-item .nav-link .fa-exclamation-triangle {
+    color: #ffdd00;
+    font-size: 0.8em !important;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px;
+    width: auto;
+}
+
+.menu .menu-item .nav-link .not-enabled {
+    opacity: 0.7;
+}
