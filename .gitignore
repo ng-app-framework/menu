@@ -5,6 +5,7 @@ dist
 tmp
 out-tsc
 coverage
+.update-log
 
 # dependencies
 node_modules
