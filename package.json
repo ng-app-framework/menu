@@ -12,10 +12,7 @@
     "build": "ng build",
     "test": "ng test --watch=false",
     "lint": "ng lint",
-    "package": "ng-packagr && cp -r ./public/ ./dist/public",
-    "patch": "npm version patch --force && ng-packagr && cp -r ./public/ ./dist/public && npm publish dist",
-    "minor": "npm version minor --force && ng-packagr && cp -r ./public/ ./dist/public && npm publish dist",
-    "major": "npm version major --force && ng-packagr && cp -r ./public/ ./dist/public && npm publish dist"
+    "package": "ng-packagr && cp -r ./public/ ./dist/public"
   },
   "private": false,
   "dependencies": {
