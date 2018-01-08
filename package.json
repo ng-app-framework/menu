@@ -25,7 +25,7 @@
         "@ng-app-framework/feature": "^1.1.13",
         "@ng-app-framework/safe": "^1.1.13",
         "@ng-app-framework/session": "^1.1.13",
-        "@ng-app-framework/validation": "^1.1.16",
+        "@ng-app-framework/validation": "^1.1.19",
         "ngx-bootstrap": "^2.0.0-rc.0",
         "rxjs": "^5.5.6"
     },
@@ -79,6 +79,7 @@
             "name": "ng-app-menu",
             "externals": {
                 "rxjs/Rx": "rxjs",
+                "ngx-bootstrap": "ngx-bootstrap",
                 "@ng-app-framework/core": "ng-app-core",
                 "@ng-app-framework/access": "ng-app-access",
                 "@ng-app-framework/feature": "ng-app-feature",
