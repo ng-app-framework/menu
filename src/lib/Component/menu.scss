@@ -1,5 +1,42 @@
 
-.ng-menu-item-body, .empty-menu-item, .ng-menu-item-menu > .nav-link {
+ng-menu {
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: hidden;
+    position: relative;
+    .float-right .fa {
+        float: right;
+    }
+}
+
+ng-menu ng-menu {
+    width: 100%;
+    font-size: 14px;
+}
+
+ng-menu ng-menu-item .nav-link .fa-exclamation-triangle {
+    color: #ffdd00;
+    font-size: 0.8em !important;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px;
+    width: auto;
+}
+
+ng-menu ng-menu-item .nav-link .not-enabled {
+    opacity: 0.7;
+}
+
+ng-menu, ng-menu-item {
+    position: relative;
+    display: block;
+}
+
+ng-menu-item .nav-link {
     display: block;
     position: relative;
     border-left: 3px solid transparent;
@@ -13,7 +50,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    .fa:not(.float-right) {
+    .fa.ng-menu-item-icon {
         padding-right: 5px;
         width: 20px;
     }
@@ -22,31 +59,29 @@
         height: 18px;
         line-height: 18px;
         text-align: center;
-        margin-top:2px;
+        margin-top: 2px;
     }
 }
 
-.ng-menu-item-body:active,
-.ng-menu-item-body:focus {
+ng-menu-item > .nav-item > .nav-link:active,
+ng-menu-item > .nav-item > .nav-link:focus {
     text-decoration: none;
 }
 
-.ng-menu-item-body:hover,
-.ng-menu-item-body.active {
+ng-menu-item > .nav-item > .nav-link:hover,
+ng-menu-item > .nav-item > .nav-link.active {
     text-decoration: none;
     background: rgba(0, 0, 0, 0.2);
 }
 
-.ng-menu-item-body.active {
+ng-menu-item > .nav-item > .nav-link.active {
     border-left: 3px solid #efefef;
 }
 
 .child-menu {
     height: auto;
     overflow-x: hidden;
-    > .ng-menu > .menu > .menu-item > .ng-menu-item-body,
-    > .ng-menu > .menu > .menu-item > .ng-menu-item-menu > .nav-link,
-    > .ng-menu > .menu > .menu-item > .empty-menu-item {
+    > ng-menu > ng-menu-item > .nav-item > .nav-link {
         font-size: 1em;
         opacity: 1;
         transition: font-size 100ms 100ms ease-in,
@@ -55,25 +90,19 @@
     }
     &.open {
         font-size: 1em;
-        > .ng-menu > .menu > .menu-item > .ng-menu-item-body,
-        > .ng-menu > .menu > .menu-item > .ng-menu-item-menu > .nav-link,
-        > .ng-menu > .menu > .menu-item > .empty-menu-item {
+        > ng-menu > ng-menu-item > .nav-item > .nav-link {
             padding: 5px 5px 5px 20px;
             opacity: 1;
             font-size: 1em;
         }
         .child-menu.open {
-            > .ng-menu > .menu > .menu-item > .ng-menu-item-body,
-            > .ng-menu > .menu > .menu-item > .ng-menu-item-menu > .nav-link,
-            > .ng-menu > .menu > .menu-item > .empty-menu-item {
+            > ng-menu > ng-menu-item > .nav-item > .nav-link {
                 padding-left: 40px;
             }
         }
     }
     &:not(.open) {
-        .ng-menu > .menu > .menu-item > .ng-menu-item-body,
-        .ng-menu > .menu > .menu-item > .ng-menu-item-menu > .nav-link,
-        .ng-menu > .menu > .menu-item > .empty-menu-item {
+        ng-menu > ng-menu-item > .nav-item > .nav-link {
             padding: 0;
             opacity: 0;
             font-size: 0;

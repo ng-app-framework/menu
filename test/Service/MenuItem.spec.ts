@@ -1,4 +1,4 @@
-import {MenuItem} from "../../src/app/Service/MenuItem";
+import {MenuItem} from "../../src/lib/Service/MenuItem";
 
 describe('Module: Menu', () => {
     describe('Class: MenuItem', () => {

@@ -1,0 +1,17 @@
+<div class="nav-item">
+    <div class="nav-link" [routerLink]="link && link.length > 0 ? link : null" (click)="hasChildren() ? menuService.toggle.emit(identifier) : null"
+         [class.active]="router.url === link">
+        <span class="float-right plus" *ngIf="!open && hasChildren()"><span
+                class="fa fa-plus"></span></span>
+        <span class="float-right minus" *ngIf="open && hasChildren()"><span
+                class="fa fa-minus"></span></span>
+        <span class="fa fa-{{icon}} ng-menu-item-icon" [class.not-enabled]="!enabled"></span>
+        <span class="fa fa-exclamation-triangle" *ngIf="!enabled" tooltip="Not Enabled" container="body"></span>
+        <span class="nav-link-label" [class.not-enabled]="!enabled">
+            <ng-content select="ng-menu-item-label"></ng-content>
+        </span>
+    </div>
+</div>
+<div class="child-menu" [class.open]="open && hasChildren()" #childMenu>
+    <ng-content select="ng-menu"></ng-content>
+</div>

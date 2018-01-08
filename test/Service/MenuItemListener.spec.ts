@@ -1,8 +1,8 @@
-import {MenuItemListener} from "../../src/app/Service/MenuItemListener";
+import {MenuItemListener} from "../../src/lib/Service/MenuItemListener";
 import {EventEmitter} from "@angular/core";
 import {Observable} from "rxjs/Rx";
-import {MenuItem} from "../../src/app/Service/MenuItem";
-import {MenuStructure} from "../../src/app/Service/MenuStructure";
+import {MenuItem} from "../../src/lib/Service/MenuItem";
+import {MenuStructure} from "../../src/lib/Service/MenuStructure";
 
 describe('Module: Menu', () => {
     describe('Class: MenuItemListener', () => {

@@ -1,18 +1,23 @@
 import {Component, NgModule, ViewEncapsulation} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
-import {NgMenuModule} from "./NgMenuModule";
-import {MenuEvents} from "./Service/MenuEvents";
-import {MenuItemFactory} from "./Service/MenuItemFactory";
+import {Value} from "@ng-app-framework/core";
+import {Features} from "@ng-app-framework/feature";
+import {Session, SessionState} from "@ng-app-framework/session";
+import {NgMenuModule} from "../lib/NgMenuModule";
+import {MenuEvents} from "../lib/Service/MenuEvents";
+import {MenuItemFactory} from "../lib/Service/MenuItemFactory";
 import {RouterModule} from "@angular/router";
-import {AccessController, Roles} from "@ng-app-framework/access";
+import {AccessController, Roles, SessionStateWithRole} from "@ng-app-framework/access";
+import {MenuItemStructure} from "../lib/Structure/MenuItemStructure";
 
 @Component({
     selector     : 'app',
     encapsulation: ViewEncapsulation.None,
     template     : `
         <div class="menu-container">
-            <div class="ng-menu" [menuItems]="menuItemFactory.menuItems"></div>
+            <ng-menu [menu]="menu" [isAvailable]="isAvailable">
+            </ng-menu>
         </div>
         <div class="page-body">
             <div class="container-fluid">
@@ -81,6 +86,35 @@ NgMenuModule.forRoot([
 ])
     `;
 
+    menu = [
+        {
+            text: 'The <b>Menu</b> is Below!'
+        },
+        {
+            text: 'Home',
+            icon: 'home',
+            link: '/'
+        },
+        {
+            text    : 'Menu',
+            icon    : 'bars',
+            children: [
+                {
+                    text               : 'Somewhere',
+                    icon               : 'flag',
+                    link               : '/somewhere',
+                    requiredPermissions: ['random-permission']
+                },
+                {
+                    text               : 'Protected Somewhere',
+                    icon               : 'flag',
+                    link               : '/somewhere-2',
+                    requiredPermissions: ['other-permission']
+                }
+            ]
+        }
+    ];
+
     componentCode = `
 constructor(public events: MenuEvents, public menuItemFactory: MenuItemFactory) {
 }
@@ -89,12 +123,32 @@ ngOnInit() {
 }
     `;
 
-    constructor(public events: MenuEvents, public menuItemFactory: MenuItemFactory) {
+    constructor(public sessionState:SessionStateWithRole, public accessController: AccessController, public features: Features) {
     }
 
-    ngOnInit() {
-        this.events.onLoadMenu.emit();
+    isAvailable = (menuItem:any) => {
+        return this.canAccessLink(menuItem);
+    };
+
+    doesUserHaveAccess(menuItem: MenuItemStructure) {
+        if (this.doesMenuItemHaveRequiredPermissions(menuItem)) {
+            return this.accessController.getRole(this.sessionState.role).isAuthorizedForActions(menuItem.requiredPermissions);
+        }
+        return true;
     }
+
+    doesMenuItemHaveRequiredPermissions(menuItem: MenuItemStructure) {
+        return Value.hasArrayElements(menuItem.requiredPermissions);
+    }
+
+    canAccessLink(menuItem: any): boolean {
+        return !Value.isProvided(menuItem.link) || (this.isRouteEnabled(menuItem.link) && this.doesUserHaveAccess(menuItem));
+    }
+    isRouteEnabled(route: string = '') {
+        return this.sessionState.role === Roles.ADMIN
+            || this.features.isRouteEnabled(route);
+    }
+
 }
 
 @NgModule({
@@ -115,7 +169,7 @@ ngOnInit() {
         ]),
         NgMenuModule.forRoot([
             {
-              text: 'The <b>Menu</b> is Below!'
+                text: 'The <b>Menu</b> is Below!'
             },
             {
                 text: 'Home',

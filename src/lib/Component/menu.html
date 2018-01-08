@@ -1,0 +1,13 @@
+<ng-content select="ng-menu-item"></ng-content>
+<ng-container *ngIf="menu && menu.length > 0">
+    <ng-container *ngFor="let menuItem of menu">
+        <ng-menu-item [icon]="menuItem.icon"
+                      [link]="menuItem['link']"
+                      [enabled]="menuItem['enabled'] !== false"
+                      *ngIf="isAvailable(menuItem)">
+            <ng-menu-item-label [innerHTML]="menuItem['text'] | safeHtml"></ng-menu-item-label>
+            <ng-menu [menu]="menuItem['children']" [isAvailable]="isAvailable"
+                     *ngIf="menuItem['children'] && menuItem['children'].length > 0"></ng-menu>
+        </ng-menu-item>
+    </ng-container>
+</ng-container>

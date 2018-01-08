@@ -1,5 +1,5 @@
-import {MenuItemFactory} from "../../src/app/Service/MenuItemFactory";
-import {MenuItem} from "../../src/app/Service/MenuItem";
+import {MenuItemFactory} from "../../src/lib/Service/MenuItemFactory";
+import {MenuItem} from "../../src/lib/Service/MenuItem";
 import {Observable} from "rxjs/Rx";
 
 describe('Module: Menu', () => {

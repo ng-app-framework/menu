@@ -1,5 +1,5 @@
-import {MenuItemAccessHandler} from "../../src/app/Service/MenuItemAccessHandler";
-import {MenuItemStructure} from "../../src/app/Structure/MenuItemStructure";
+import {MenuItemAccessHandler} from "../../src/lib/Service/MenuItemAccessHandler";
+import {MenuItemStructure} from "../../src/lib/Structure/MenuItemStructure";
 import {Roles} from "@ng-app-framework/access";
 
 describe('Module: Menu', () => {

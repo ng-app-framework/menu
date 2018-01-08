@@ -1,9 +1,8 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {MenuComponent} from "./Component/MenuComponent";
-import {MenuItemMenuComponent} from "./Component/MenuItemMenuComponent";
+import {MenuItemLabelComponent} from "./Component/MenuItemLabelComponent";
 import {MenuItemFactory} from "./Service/MenuItemFactory";
 import {MenuItemComponent} from "./Component/MenuItemComponent";
-import {MenuItemBodyComponent} from "./Component/MenuItemBodyComponent";
 import {NavigationEnd, Router, RouterModule} from "@angular/router";
 import {MenuItemListener} from "./Service/MenuItemListener";
 import {MenuItemStructure} from "./Structure/MenuItemStructure";
@@ -17,13 +16,13 @@ import {NgCoreModule} from "@ng-app-framework/core";
 import {CommonModule} from "@angular/common";
 import {NgSessionModule} from "@ng-app-framework/session";
 import {NgSafeModule} from "@ng-app-framework/safe";
+import {MenuService} from './Service/MenuService';
 
 @NgModule({
     declarations: [
         MenuComponent,
         MenuItemComponent,
-        MenuItemMenuComponent,
-        MenuItemBodyComponent
+        MenuItemLabelComponent
     ],
     imports     : [
         CommonModule,
@@ -33,16 +32,19 @@ import {NgSafeModule} from "@ng-app-framework/safe";
         NgAccessModule,
         NgSessionModule,
         RouterModule,
-        TooltipModule
+        TooltipModule.forRoot()
     ],
     exports     : [
-        MenuComponent
+        MenuComponent,
+        MenuItemComponent,
+        MenuItemLabelComponent
     ],
     providers   : [
         MenuItemFactory,
         MenuItemListener,
         MenuEvents,
-        MenuItemAccessHandler
+        MenuItemAccessHandler,
+        MenuService
     ]
 })
 export class NgMenuModule {
