@@ -1,8 +1,6 @@
 // This file includes polyfills needed by Angular 2 and is loaded before
 // the app. You can add your own extra polyfills to this file.
 
-import 'rxjs/Rx';
-
 import 'core-js/es6/symbol';
 import 'core-js/es6/object';
 import 'core-js/es6/function';
@@ -19,3 +17,13 @@ import 'core-js/es6/set';
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
+
+
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/interval';
+import 'rxjs/add/observable/merge';
+
+import 'rxjs/add/operator/takeUntil';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/merge';
