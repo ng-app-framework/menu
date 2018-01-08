@@ -20,12 +20,12 @@
         "@angular/core": "^5.1.3",
         "@angular/forms": "^5.1.3",
         "@angular/router": "^5.1.3",
-        "@ng-app-framework/access": "^1.1.10",
-        "@ng-app-framework/core": "^1.1.11",
-        "@ng-app-framework/feature": "^1.1.10",
-        "@ng-app-framework/safe": "^1.1.10",
-        "@ng-app-framework/session": "^1.1.10",
-        "@ng-app-framework/validation": "^1.1.10",
+        "@ng-app-framework/access": "^1.1.11",
+        "@ng-app-framework/core": "^1.1.14",
+        "@ng-app-framework/feature": "^1.1.12",
+        "@ng-app-framework/safe": "^1.1.12",
+        "@ng-app-framework/session": "^1.1.12",
+        "@ng-app-framework/validation": "^1.1.15",
         "ngx-bootstrap": "^2.0.0-rc.0",
         "rxjs": "^5.5.6"
     },
@@ -75,7 +75,16 @@
     "$schema": "./node_modules/ng-packagr/package.schema.json",
     "ngPackage": {
         "lib": {
-            "entryFile": "index.ts"
+            "entryFile": "index.ts",
+            "name": "ng-app-menu",
+            "externals": {
+                "@ng-app-framework/core": "ng-app-core",
+                "@ng-app-framework/access": "ng-app-access",
+                "@ng-app-framework/feature": "ng-app-feature",
+                "@ng-app-framework/session": "ng-app-session",
+                "@ng-app-framework/safe": "ng-app-safe",
+                "@ng-app-framework/validation": "ng-app-validation"
+            }
         }
     }
 }

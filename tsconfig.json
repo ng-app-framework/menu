@@ -19,6 +19,9 @@
       "./node_modules/@types"
     ]
   },
+  "paths": {
+    "rxjs": "./lib/rxjs.ts"
+  },
   "exclude": ["../node_modules"],
   "include": ["./test.ts", "./test/**/*.ts", "./src/**/*.ts"]
 }
